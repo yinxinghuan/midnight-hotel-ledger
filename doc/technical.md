@@ -40,7 +40,7 @@ _production/
 - `Footage` 以 `plug / maintenance / suite` 映射独立视频、尾帧和四段字幕；`canplay` 后 180 ms 淡入，`error` 时保留首帧并继续结果时间线。
 - 结果态直接渲染分支尾帧，不依赖解码器停在视频最后一帧。
 - 三条视频均为 H.264 + AAC、768 × 1024、24 fps、5.041667 秒，并在封面或案件页通过临时 video 元素预载。
-- 视口比例为 `min(innerWidth / 390, innerHeight / 844, 1)`；绝对居中缩放保证 320 × 568 下控件仍约 44.42 px 高。
+- 手机宽度不超过 520px 时，视口比例只取 `clientWidth / 390`，终端始终横向铺满；缩放后的内容高度写入 `--mhl-height`，短屏通过页面纵向滚动访问完整内容，不再按高度二次缩小。桌面端保持 390 × 844 居中展示。
 - 收藏写入 `midnight_hotel_ledger_reports_v1`；Web Audio、视频和预载失败均不阻塞归档。
 
 ## 4. 扩展点

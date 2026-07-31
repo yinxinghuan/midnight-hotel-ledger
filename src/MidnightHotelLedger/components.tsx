@@ -1,10 +1,17 @@
-import{useEffect,useState}from'react';import type{EndingId,Locale}from'./types';
-const media:Record<EndingId,{video:string;end:string;captions:{zh:string[];en:string[]}}>= {
- plug:{video:'./generated/plug_cinema.mp4',end:'./generated/plug_end.webp',captions:{zh:['排水口封闭指令已确认。','水压正在礼貌地上升。','海浪与三位鱼类住客抵达。','307号房拒绝保持干燥。'],en:['Drain seal instruction confirmed.','Water pressure is rising politely.','A wave and three fish guests arrive.','Room 307 declines to stay dry.']}},
- maintenance:{video:'./generated/maintenance_cinema.mp4',end:'./generated/maintenance_end.webp',captions:{zh:['夜间维修铃已响一次。','浴缸正在处理工单。','无人潜水维修箱浮出水面。','维修部门拒绝透露所在楼层。'],en:['The night maintenance bell rings once.','The bathtub processes the ticket.','An unmanned dive repair kit surfaces.','Maintenance declines to name its floor.']}},
- suite:{video:'./generated/suite_cinema.mp4',end:'./generated/suite_end.webp',captions:{zh:['海景升级已获批准。','浴缸正在联系住客。','八腕贵宾接过房卡。','客房服务获得五星评价。'],en:['Ocean-suite upgrade approved.','The bathtub contacts its guest.','An eight-armed VIP accepts the keycard.','Room service receives five stars.']}}
-};export const HOTEL_VIDEOS=Object.values(media).map(m=>m.video);
+import{useEffect,useState}from'react';
+import type{Locale,Outcome,Scene}from'./types';
+
 export function SoundIcon({off}:{off:boolean}){return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path className="line" d="M16 9c1.4 1.7 1.4 4.3 0 6M19 6c3 3.3 3 8.7 0 12"/>{off&&<path className="line" d="M4 4l16 16"/>}</svg>}
 export function ArrowIcon(){return <svg viewBox="0 0 24 24" aria-hidden="true"><path className="line" d="M5 12h13M13 6l6 6-6 6"/></svg>}
-export function HotelStill({locale}:{locale:Locale}){return <div className="mhl-still"><img src="./generated/hotel_start.webp" alt={locale==='zh'?'Mara 与住客查看普通浴缸':'Mara and a guest inspect an ordinary bathtub'} draggable={false}/><div><span>CAM 03</span><strong>{locale==='zh'?'三段录像共同首帧':'SHARED FIRST FRAME'}</strong></div></div>}
-export function Footage({id,beat,locale,result}:{id:EndingId;beat:number;locale:Locale;result:boolean}){const [ready,setReady]=useState(false),[failed,setFailed]=useState(false),m=media[id];useEffect(()=>{setReady(false);setFailed(false)},[id]);const cap=m.captions[locale][Math.min(Math.max(beat-1,0),3)];return <div className={`mhl-footage ${ready?'mhl-footage--ready':''} ${failed?'mhl-footage--failed':''}`}><img className="mhl-footage__still" src={result?m.end:'./generated/hotel_start.webp'} alt={locale==='zh'?'307号房事件录像':'Room 307 incident footage'} draggable={false}/>{!result&&!failed&&<video src={m.video} poster="./generated/hotel_start.webp" autoPlay muted playsInline preload="auto" onCanPlay={()=>setReady(true)} onError={()=>setFailed(true)}/>}<div className="mhl-footage__scan"/><div className="mhl-footage__hud"><span>REC · CAM 03</span><strong>02:17:{String(beat*7).padStart(2,'0')}</strong></div>{!ready&&!result&&<div className="mhl-footage__loading">{failed?(locale==='zh'?'录像不可用 · 使用确定尾帧继续':'REEL UNAVAILABLE · FINAL FRAME READY'):(locale==='zh'?'首帧保持中 · 录像装片中':'FIRST FRAME HELD · LOADING REEL')}</div>}<div className="mhl-footage__caption"><span>{String(Math.max(beat,1)).padStart(2,'0')}</span><strong>{cap}</strong></div></div>}
+export function HotelStill({scene}:{scene:Scene}){return <div className="mhl-still"><img src={scene.start} alt={scene.alt.zh} draggable={false}/><div><span>CAM {scene.id==='bath'?'03':'01'}</span><strong>02:{scene.id==='bath'?'17':scene.id==='checkin'?'22':'29'}</strong></div></div>}
+export function Footage({scene,outcome,beat,locale,result}:{scene:Scene;outcome:Outcome;beat:number;locale:Locale;result:boolean}){
+ const[ready,setReady]=useState(false),[failed,setFailed]=useState(false);
+ useEffect(()=>{setReady(false);setFailed(false)},[outcome.id]);
+ const caption=outcome.captions[locale][Math.min(Math.max(beat-1,0),3)];
+ return <div className={`mhl-footage ${ready?'mhl-footage--ready':''} ${failed?'mhl-footage--failed':''}`}>
+  <img className="mhl-footage__still" src={result?outcome.end:scene.start} alt={scene.alt[locale]} draggable={false}/>
+  {!result&&!failed&&<video src={outcome.video} poster={scene.start} autoPlay muted playsInline preload="auto" onCanPlay={()=>setReady(true)} onError={()=>setFailed(true)}/>}<div className="mhl-footage__scan"/><div className="mhl-footage__hud"><span>REC · CAM {scene.id==='bath'?'03':'01'}</span><strong>02:{String(17+beat*3).padStart(2,'0')}</strong></div>
+  {!ready&&!result&&<div className="mhl-footage__loading">{failed?(locale==='zh'?'录像不可用 · 尾帧已就绪':'REEL UNAVAILABLE · FINAL FRAME READY'):(locale==='zh'?'保持首帧 · 录像装片中':'FIRST FRAME HELD · LOADING REEL')}</div>}
+  <div className="mhl-footage__caption"><span>{String(Math.max(beat,1)).padStart(2,'0')}</span><strong>{caption}</strong></div>
+ </div>
+}

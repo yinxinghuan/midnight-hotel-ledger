@@ -3,51 +3,44 @@
 ## 1. 技术栈
 
 - React 18 + TypeScript 5 + Less + Vite 5，构建基址为 `./`。
-- 主画面为 390 × 844 的响应式 DOM；建立镜头和结果使用本地 WebP，三条演出使用本地 H.264 MP4。
-- Web Audio API 合成五拍反馈；`localStorage` 保存三份案件档案。
-- 图片由 Aigram transit `gen-image` 制作；视频由正式首尾帧 `/video` 与 `/video_task` 接口串行制作。
+- 主画面为响应式 DOM；每场建立画面使用本地 WebP，九种结果使用本地 H.264 MP4 与确定性的尾帧回退。
+- Web Audio API 合成操作与结算反馈；`localStorage` 保存九份影像记录。
+- 图片由 Aigram transit `gen-image` 制作，视频由正式首尾帧 `/video` 与 `/video_task` 接口生成。
 
 ## 2. 目录结构
 
 ```text
 src/MidnightHotelLedger/
-├── MidnightHotelLedger.tsx         # 状态机、媒体预载、输入和收藏
-├── MidnightHotelLedger.less        # 酒红皮革 / 黄铜终端 UI
-├── components.tsx                  # 共享首帧、视频舞台、回退和 SVG 图标
-├── data.ts                          # 三条处置与报告文案
-├── i18n/index.ts                    # zh / en
-├── utils/sounds.ts                  # Web Audio 五拍反馈
-└── types.ts                         # 状态与结局类型
-public/generated/
-├── hotel_start.webp                # 三条视频共同精确首帧
-├── plug_cinema.mp4 / plug_end.webp
-├── maintenance_cinema.mp4 / maintenance_end.webp
-└── suite_cinema.mp4 / suite_end.webp
+├── MidnightHotelLedger.tsx         # 三场状态机、轮换答案、媒体预载和收藏
+├── MidnightHotelLedger.less        # 原有酒红皮革 / 黄铜终端视觉
+├── refinement.less                 # 三步进度、极简选择与完整结局修订
+├── components.tsx                  # 通用建立帧、视频舞台、回退与 SVG 图标
+├── data.ts                          # 三场、九结果、媒体路径与双语文案
+├── i18n/index.ts                    # 通用 zh / en 界面文本
+├── utils/sounds.ts                  # 分级 Web Audio 反馈
+└── types.ts                         # Scene、Outcome 与阶段类型
+public/generated/                    # 三场首帧、九个尾帧和九条正式 MP4
 _production/
-├── generate_hotel_cinema.py        # 串行首尾帧与视频制作、重试和修订
-├── hotel_cinema_manifest.json      # URL、提示词和任务 ID
-├── generate_poster.py              # 正式海报与定向修图
-├── poster_manifest.json            # 海报追溯证据
-└── rejected/                       # 未发布的海景首帧和人物重复版本
+├── generate_hotel_cinema.py        # 第一场制作流水线
+├── hotel_cinema_manifest.json      # 第一场来源与任务记录
+├── generate_extended_hotel_cinema.py
+└── extended_hotel_cinema_manifest.json # 新六条影像的提示、URL 与 task ID
 ```
 
 ## 3. 核心模块
 
-- `src/game-id.ts` 注入永久 UUID `03b3aa05-0634-47d8-bab6-4effc6271007`，供平台会话能力统一识别。
-
-- 状态机为 `cover → incident → footage → report → incident`；三条分支统一在 650 / 2200 / 4100 / 5200 ms 推进。
-- `HotelStill`、`Footage` 静态层和视频 `poster` 都引用 `./generated/hotel_start.webp`，确保选择前、点击当帧和媒体等待态像素来源一致。
-- `Footage` 以 `plug / maintenance / suite` 映射独立视频、尾帧和四段字幕；`canplay` 后 180 ms 淡入，`error` 时保留首帧并继续结果时间线。
-- 结果态直接渲染分支尾帧，不依赖解码器停在视频最后一帧。
-- 三条视频均为 H.264 + AAC、768 × 1024、24 fps、5.041667 秒，并在封面或案件页通过临时 video 元素预载。
-- 手机宽度不超过 520px 时，视口比例只取 `clientWidth / 390`，终端始终横向铺满；缩放后的内容高度写入 `--mhl-height`，短屏通过页面纵向滚动访问完整内容，不再按高度二次缩小。桌面端保持 390 × 844 居中展示。
-- 收藏写入 `midnight_hotel_ledger_reports_v1`；Web Audio、视频和预载失败均不阻塞归档。
+- `src/game-id.ts` 保存永久 UUID `03b3aa05-0634-47d8-bab6-4effc6271007`。
+- 状态链为 `cover → setup → incident → footage → report → complete`。失败后重试当前场，通过后推进；第三场通过后显示章鱼接管夜班的完整结局。
+- `data.ts` 以 `Scene[]` 绑定每场共享首帧和三个独立 `video/end`。`HotelStill` 与 `Footage` 使用相同建立帧，选择前、加载中和视频首帧连续；播放结束后直接显示指定尾帧。
+- 视频使用 `autoPlay muted playsInline preload="auto"`。若解码失败，画面保留尾帧并按回退计时进入报告，媒体错误不会锁死故事。
+- 每次进入或重试场景都会旋转三个答案；触屏和数字键共享 `displayedOutcomes`，避免通过选项形成固定位置规律。
+- 手机端宽度始终铺满视口，390×844 与 320×568 都保持主画面优先；信息区只保留场景、问题、三个短答案和单一主按钮。
+- 九种结果写入 `midnight_hotel_ledger_reports_v2`，键格式为 `sceneId:outcomeId`；声音设置使用独立 key。
 
 ## 4. 扩展点
 
-- 新增案件：增加场景层状态与共享首帧，为每条处置在 `components.tsx` 注册视频、尾帧及字幕。
-- 新增或重做媒体：修改 `_production/generate_hotel_cinema.py`，先用 `--start-only` 审首帧，再生成尾帧和视频。
-- 修改终端 UI：编辑 Less 中的 `wine / brass / night / paper / sea / alarm` 视觉 token 和屏幕区块。
-- 修改双语文案：编辑 `i18n/index.ts` 与 `data.ts`。
-- 调整节奏：同步修改 `MidnightHotelLedger.tsx` 定时点、视频提示词和音效节拍。
-- 发布：保留 `base: './'`、永久 UUID、七个本地媒体文件和专属存储键。
+- 新增案件：在 `data.ts` 添加场景和三个结果，同时为每个结果提供 MP4 与尾帧。
+- 新增或重做媒体：复制 `_production/generate_extended_hotel_cinema.py` 的正式 transit 流程，并把 URL、任务 ID 和提示写入新 manifest。
+- 调整 UI：基础皮革终端在 `MidnightHotelLedger.less`，三场进度、极简选项和结局在 `refinement.less`。
+- 修改节奏：调整主组件的 setup 延时、视频结束回调和结果反馈，不要用固定文字替代真实演出。
+- 接平台统计或云存档：在现有 `seen` 镜像外调用共享 runtime，保持永久 UUID 和 v2 语义键不变。

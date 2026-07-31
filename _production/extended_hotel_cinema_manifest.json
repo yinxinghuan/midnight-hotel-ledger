@@ -1,0 +1,52 @@
+{
+  "scene2_start_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524050356674.webp",
+  "scene2_start_prompt": "Live-action black-comedy continuation of the exact reference. Preserve pixel-consistent MARA: Western young adult woman, short wavy dark-brown bob, plain burgundy silk blouse and high-waisted black trousers; preserve the same older white male guest with silver hair, grey moustache and charcoal robe; preserve the same elegant purple octopus tentacle. Move them within the same old European boutique hotel to a compact midnight reception desk with burgundy leather panels, oxidized brass counter edge, blank wood key cubbies and warm tungsten lamps. Mara stands behind the counter holding one completely blank cream registration card and one plain brass room key. One purple tentacle rests politely across the guest side of the counter, waiting to check in; the older guest stands beside it holding the same covered silver tray. Medium-wide vertical-safe composition, realistic skin and cloth, deadpan service comedy, same night color grade. No readable paper, no passport, no pen, no extra tentacle, no full octopus body, no badge, no letters, no numbers, no hotel logo, no watermark, no UI, not horror, not illustration. Exactly two humans.",
+  "passport": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524071984278.webp",
+    "end_prompt": "Preserve the exact same Mara, older guest, purple tentacle, reception desk, camera and lighting from the reference. Ending frame: Mara professionally presents one completely blank closed burgundy passport booklet. The tentacle presses one wet suction cup onto it, leaving one enormous purple circular ink mark that covers the blank cover. Mara remains composed; the older guest peers over the tray. One tentacle only, exactly two humans, clear faces, no readable text, no letters, no logo, no watermark, no UI.",
+    "video_task_id": "cd96a4b4-7f0d-4507-845f-8fb20d4d732a",
+    "video_prompt": "Same Mara, guest, single tentacle, desk and camera. Mara presents one blank passport; the tentacle presses one suction cup onto it, leaving one huge purple circular mark. One readable action, stable faces, no cut, no morphing, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-025824.mp4"
+  },
+  "charge-eight": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524090556671.webp",
+    "end_prompt": "Preserve the exact same Mara, older guest, purple tentacle, reception desk, camera and lighting from the reference. Ending frame of one clear visual joke: Mara has placed eight identical blank brass room keys in a perfectly straight row on the counter and holds an absurdly long blank receipt that rolls across the floor. The single tentacle recoils in polite financial shock while the older guest counts keys on his fingers. Exactly two humans, one tentacle, no readable text, no letters, no numbers, no logo, no watermark, no UI.",
+    "video_task_id": "17aa350f-ae92-4e0d-bdf3-e9cfd5262d83",
+    "video_prompt": "Same Mara, guest, single tentacle, desk and camera. Mara rapidly lays eight blank brass room keys in one straight row and an absurdly long blank receipt unrolls to the floor; the tentacle recoils once. Stable faces, no cut, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-025923.mp4"
+  },
+  "eight-signatures": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524107464831.webp",
+    "end_prompt": "Preserve the exact same Mara face, burgundy blouse, older guest, reception desk, hotel lighting and the same purple octopus identity. Ending frame: exactly eight elegant purple tentacles fan neatly over the guest side of the brass counter. Each tentacle holds one fountain pen and signs one separate completely blank cream registration card. Mara calmly presents a fan of eight blank brass room keycards; the older guest holds the covered silver tray in deadpan amazement. Clear faces, readable eight-arm silhouette, exactly two humans, no full octopus head, no writing visible, no letters, no numbers, no logo, no watermark, no UI, not horror.",
+    "video_task_id": "3c3af5d9-8aed-44a1-85d5-dec71c5b0685",
+    "video_prompt": "Same Mara, guest, desk and camera. The single waiting tentacle is joined by seven matching tentacles; exactly eight arms fan out, each signs one blank registration card with one pen, while Mara presents eight blank brass keycards. One continuous reveal, stable faces, no full octopus head, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-030021.mp4"
+  },
+  "scene3_start_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524107464831.webp",
+  "unplug": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524124362589.webp",
+    "end_prompt": "Preserve the exact same Mara, older guest, exactly eight purple tentacles, reception desk, camera and lighting from the reference. Ending frame: Mara holds one unplugged black telephone cord with professional finality, but every tentacle presses a different polished brass service bell lined across the counter. Eight bells are visibly ringing with small physical motion, while the older guest covers one ear and keeps holding the tray. Exactly two humans, no extra arms, no readable text, no logo, no watermark, no UI.",
+    "video_task_id": "ffc6a996-81e2-4f27-8294-5762ff2a8cc5",
+    "video_prompt": "Same Mara, guest, exactly eight tentacles, desk and camera. Mara unplugs one telephone cord; immediately all eight tentacles press eight brass service bells once. The guest covers one ear. One readable action, stable faces, no extra arms, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-030119.mp4"
+  },
+  "eight-breakfasts": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524141356665.webp",
+    "end_prompt": "Preserve the exact same Mara, older guest, exactly eight purple tentacles, reception desk, camera and lighting from the reference. Ending frame: eight covered silver breakfast trays are stacked in a precarious leaning tower across the brass counter, each held by a different tentacle. One bread roll is airborne at the top. Mara braces the tower with both hands while the older guest still holds the original tiny tray. Clear faces, exactly two humans, no extra arms, no text, no logo, no watermark, no UI.",
+    "video_task_id": "0c91660b-c023-43bd-ba3a-abfc692f324a",
+    "video_prompt": "Same Mara, guest, exactly eight tentacles, desk and camera. Eight covered breakfast trays arrive into the tentacles and build one leaning silver tower; one bread roll pops upward as Mara braces it. One continuous action, stable faces, no extra arms, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-030222.mp4"
+  },
+  "night-manager": {
+    "end_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524275087510.webp",
+    "end_prompt": "Preserve the exact same Mara, older guest in his original charcoal-grey terry-cloth hotel robe and slippers, exactly eight purple tentacles, reception desk, camera and lighting from the reference. Final ending frame of sophisticated live-action black comedy: the eight tentacles now operate the midnight front desk with perfect efficiency—one rings a brass bell, one sorts blank room keys, one holds a telephone, one offers the covered tray, and the others manage blank cards. Mara walks calmly toward the exit carrying only her black coat over one arm, finally off duty; both her hands and the coat are completely free of cards, badges or paper. The older guest remains in the grey robe at the counter waiting. A shallow ribbon of turquoise seawater creeps from the dark corridor behind them, showing room 307 is still leaking. Exactly two humans, no octopus head, no extra arms, no suit jacket, no shirt, no tie, no card in Mara's hands, no badge, no readable text, no letters, no numbers, no logo, no watermark, no UI, not horror.",
+    "rejected_end_urls": [
+      "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524158656665.webp",
+      "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785524222482522.webp"
+    ],
+    "end_repair_prompt": "Precision photographic cleanup of the exact reference image. Preserve Mara at frame right with the exact same face, short dark-brown bob, burgundy silk blouse, black skirt, black coat over her arm and walking-off-duty pose. Preserve the eight purple tentacles, burgundy reception desk, brass bell, telephone, covered tray, key cubbies, camera, lighting and turquoise seawater on the corridor floor. Make only two corrections: restore the older white male guest at frame left to his original charcoal-grey hotel robe with no suit jacket, shirt or tie; completely remove the tiny blue badge or printed mark from the cream time card in Mara's hand and leave the card perfectly blank. All cards remain blank. Exactly two humans, no extra arms, no readable text, no letters, no numbers, no badge, no logo, no watermark, no UI.",
+    "video_task_id": "48d0e0c5-d82e-4046-ba2f-d964d28badfb",
+    "video_prompt": "Same Mara, guest, exactly eight tentacles, desk and camera. The tentacles efficiently take over bell, telephone, blank keys, tray and registration cards while Mara puts on her coat and walks off duty; a shallow turquoise ribbon of water creeps from the corridor. Stable faces, no cut, no text.",
+    "video_url": "https://cdn.aiwaves.tech/prodsv/telegram/video/123456/20260801-030322.mp4"
+  }
+}
